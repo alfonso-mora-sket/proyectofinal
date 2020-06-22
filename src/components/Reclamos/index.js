@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Modal, Button, Form, Col } from 'react-bootstrap'
 
-class Poliza extends React.Component {
+class Reclamos extends React.Component {
     constructor(props) {
         super(props);
 
@@ -30,7 +30,7 @@ class Poliza extends React.Component {
                     onHide={this.changeCerrar}
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Captura de Pólizas</Modal.Title>
+                        <Modal.Title>Captura de Reclamos</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form.Group>
@@ -48,7 +48,7 @@ class Poliza extends React.Component {
                                 Importe:
                                 </Form.Label>
                                 <Col>
-                                <Form.Control type="text" placeholder="Importe de la póliza" />
+                                <Form.Control type="text" placeholder="Importe del reclamo" />
                                 </Col>
                             </Form.Row>
                         </Form.Group>
@@ -63,4 +63,4 @@ class Poliza extends React.Component {
     }
 }
 
-export default Poliza
+export default Reclamos

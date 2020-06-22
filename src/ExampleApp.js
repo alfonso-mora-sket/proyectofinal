@@ -8,7 +8,7 @@ class ExampleApp extends React.Component{
     render(){
         return(
             <div>
-                <Example mostrar = {true} />
+                <Example/>
             </div>
         )
     }

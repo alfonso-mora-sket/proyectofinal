@@ -1,7 +1,7 @@
 import React from 'react'
-import { Container, Modal, Button, Form, Col } from 'react-bootstrap'
+import { Container, Modal, Button, Form, Row, Col } from 'react-bootstrap'
 
-class Poliza extends React.Component {
+class ListPoliza extends React.Component {
     constructor(props) {
         super(props);
 
@@ -33,25 +33,28 @@ class Poliza extends React.Component {
                         <Modal.Title>Captura de Pólizas</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form.Group>
-                            <Form.Row>
-                                <Form.Label column lg={2}>
-                                Nombre:
-                                </Form.Label>
-                                <Col>
-                                <Form.Control type="text" placeholder="Nombre del cliente" />
+                        <Row key={index}>
+                                <Col sm="6">
+                                    Nombre del Cliente
                                 </Col>
-                            </Form.Row>
-                            <br />
-                            <Form.Row>
-                                <Form.Label column lg={2}>
-                                Importe:
-                                </Form.Label>
-                                <Col>
-                                <Form.Control type="text" placeholder="Importe de la póliza" />
+                                <Col sm="6">
+                                    Importe de la Póliza
                                 </Col>
-                            </Form.Row>
-                        </Form.Group>
+                        </Row>
+                        {
+                            this.props.listPolicies.map((name, amount, index) => {
+                                return(
+                                    <Row key={index}>
+                                        <Col sm="6">
+                                            {policy.name}
+                                        </Col>
+                                        <Col sm="6">
+                                            {policy.amount}
+                                        </Col>
+                                    </Row>
+                                )
+                            })
+                        }
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={this.changeCerrar} >Close</Button>
@@ -63,4 +66,4 @@ class Poliza extends React.Component {
     }
 }
 
-export default Poliza
+export default ListPoliza

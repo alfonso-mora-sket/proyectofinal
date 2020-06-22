@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
 
@@ -6,11 +6,11 @@ import { Modal, Button } from 'react-bootstrap'
 
 function Example({mostrar}) {
 
- var [show, setShow] = useState(false,false);
+ const [show, setShow] = React.useState(false,false);
   
- var handleClose = () => setShow(false);
+ const handleClose = () => setShow(false);
 
- //const handleShow = () => setShow(mostrar);
+ const handleShow = () => setShow(mostrar);
 
   return (
       <>

@@ -1,24 +1,14 @@
 import React from 'react'
 import { Container, Modal, Button, Form, Col } from 'react-bootstrap'
 
-class Poliza extends React.Component {
-    constructor(props) {
-        super(props);
+function Poliza() {
 
-        this.state = {
-            mostrar: false,
-        }
-    }
+    const [mostrar, setMostrar] = React.useState(false, false);
+        
+    const handleCerrar = () => setMostrar(false);
+    const handleMostrar = () => setMostrar(true);
     
-    handleCerrar = () => {
-       this.setState({mostrar: false})
-    }
-
-    handleMostrar = () => {
-        this.setState({mostrar: true})
-     }
- 
-    render() {
+    console.log('Poliza', mostrar)
 
     return(
             <Container>
@@ -26,8 +16,8 @@ class Poliza extends React.Component {
                     size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
                     centered
-                    show={this.state.mostrar}
-                    onHide={this.changeCerrar}
+                    show={mostrar}
+                    onHide={handleCerrar}
                 >
                     <Modal.Header closeButton>
                         <Modal.Title>Captura de Pólizas</Modal.Title>
@@ -54,13 +44,12 @@ class Poliza extends React.Component {
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.changeCerrar} >Close</Button>
-                        <Button variant="primary" onClick={this.changeCerrar} >Save changes</Button>
+                        <Button variant="secondary" onClick={handleCerrar} >Close</Button>
+                        <Button variant="primary" onClick={handleCerrar} >Save changes</Button>
                     </Modal.Footer>
                 </Modal>
             </Container>
         )
-    }
 }
 
 export default Poliza

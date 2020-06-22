@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Modal, Button, Form, Col } from 'react-bootstrap'
 
-class Poliza extends React.Component {
+class Fondos extends React.Component {
     constructor(props) {
         super(props);
 
@@ -30,25 +30,34 @@ class Poliza extends React.Component {
                     onHide={this.changeCerrar}
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Captura de Pólizas</Modal.Title>
+                        <Modal.Title>Fondos</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form.Group>
                             <Form.Row>
                                 <Form.Label column lg={2}>
-                                Nombre:
+                                Total Polizas:
                                 </Form.Label>
                                 <Col>
-                                <Form.Control type="text" placeholder="Nombre del cliente" />
+                                    {policy.amount}
                                 </Col>
                             </Form.Row>
                             <br />
                             <Form.Row>
                                 <Form.Label column lg={2}>
-                                Importe:
+                                Total Reclamos:
                                 </Form.Label>
                                 <Col>
-                                <Form.Control type="text" placeholder="Importe de la póliza" />
+                                    {claimPolicy.amount}
+                                </Col>
+                            </Form.Row>
+                            <br />
+                            <Form.Row>
+                                <Form.Label column lg={2}>
+                                Total Fondos:
+                                </Form.Label>
+                                <Col>
+                                    {policy.amount - claimPolicy.amount}
                                 </Col>
                             </Form.Row>
                         </Form.Group>
@@ -63,4 +72,4 @@ class Poliza extends React.Component {
     }
 }
 
-export default Poliza
+export default Fondos
