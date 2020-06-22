@@ -1,0 +1,34 @@
+https://github.com/alfonso-mora-sket/book_list_redux.git
+
+https://github.com/alfonso-mora-sket/aseguradora.git
+
+        <footer className="footer">
+            <div className="footer-ref">
+                Referencias:
+                <hr/>
+            </div>
+
+            <div className="footer-wrap>">
+                <div>
+                    <p>Build fast, responsive sites with Bootstrap.</p>
+                    <a className="footer-btn" href="https://getbootstrap.com">Bootstrap</a>
+                </div>                
+                <div>
+                    <p>A Complete Guide to Flexbox.</p>
+                    <a className="footer-btn" href="https://css-tricks.com">CSS tricks</a>
+                </div>        
+                <div>
+                    <p>Get vector icons and social logos on your </p>
+                    <p>website with Font Awesome, the web's most popular icon set and toolkit.</p>
+                    <a className="footer-btn" href="https://fontawesome.com/">Font Awesome</a>
+                </div>                
+                <div>                
+                    <p>Color Palettes for Designers and Artists.</p>
+                    <a className="footer-btn" href="https://colorhunt.co/">Color Hunt</a>
+                </div>        
+                <div>
+                    <p>Making the web more beautiful, fast, and open through great typography.</p>
+                    <a className="footer-btn" href="https://fonts.google.com/">Google Fonts</a>
+                </div>
+            </div>
+        </footer>
