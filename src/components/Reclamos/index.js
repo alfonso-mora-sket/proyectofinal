@@ -11,13 +11,13 @@ class Reclamos extends React.Component {
     }
     
     handleCerrar = () => {
-       this.setState({mostrar: false})
-    }
-
-    handleMostrar = () => {
-        this.setState({mostrar: true})
-     }
- 
+        this.setState({mostrar : false})
+      }
+    
+      handleMostrar = () => {
+        this.setState({mostrar : true})
+      }
+  
     render() {
 
     return(
@@ -27,7 +27,7 @@ class Reclamos extends React.Component {
                     aria-labelledby="contained-modal-title-vcenter"
                     centered
                     show={this.state.mostrar}
-                    onHide={this.changeCerrar}
+                    onHide={this.handleCerrar}
                 >
                     <Modal.Header closeButton>
                         <Modal.Title>Captura de Reclamos</Modal.Title>
@@ -35,27 +35,23 @@ class Reclamos extends React.Component {
                     <Modal.Body>
                         <Form.Group>
                             <Form.Row>
-                                <Form.Label column lg={2}>
-                                Nombre:
-                                </Form.Label>
+                                <Form.Label column lg={2}>Nombre:</Form.Label>
                                 <Col>
                                 <Form.Control type="text" placeholder="Nombre del cliente" />
                                 </Col>
                             </Form.Row>
                             <br />
                             <Form.Row>
-                                <Form.Label column lg={2}>
-                                Importe:
-                                </Form.Label>
+                                <Form.Label column lg={2}>Importe:</Form.Label>
                                 <Col>
-                                <Form.Control type="text" placeholder="Importe del reclamo" />
+                                <Form.Control type="numeric" placeholder="Importe del reclamo" />
                                 </Col>
                             </Form.Row>
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.changeCerrar} >Close</Button>
-                        <Button variant="primary" onClick={this.changeCerrar} >Save changes</Button>
+                        <Button variant="primary" onClick={this.handleCerrar} >Aplicar cambios</Button>
+                        <Button variant="secondary" onClick={this.handleCerrar} >Cerrar</Button>
                     </Modal.Footer>
                 </Modal>
             </Container>

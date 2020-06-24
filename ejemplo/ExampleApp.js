@@ -1,15 +1,14 @@
 import React from 'react'
 //import { Container } from 'react-bootstrap'
 
-import Example from './Example';
+import Example2 from './Example2';
 
 class ExampleApp extends React.Component{
 
     render(){
+        const show = true;
         return(
-            <div>
-                <Example/>
-            </div>
+            <Example2 show={show}/>
         )
     }
 }

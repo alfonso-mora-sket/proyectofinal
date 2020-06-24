@@ -11,13 +11,13 @@ class ListPoliza extends React.Component {
     }
     
     handleCerrar = () => {
-       this.setState({mostrar: false})
-    }
-
-    handleMostrar = () => {
-        this.setState({mostrar: true})
+        this.setState({mostrar: false})
      }
  
+     handleMostrar = () => {
+         this.setState({mostrar: true})
+      }
+  
     render() {
 
     return(
@@ -27,13 +27,13 @@ class ListPoliza extends React.Component {
                     aria-labelledby="contained-modal-title-vcenter"
                     centered
                     show={this.state.mostrar}
-                    onHide={this.changeCerrar}
+                    onHide={this.handleCerrar}
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Captura de Pólizas</Modal.Title>
+                        <Modal.Title>Listado de Pólizas</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Row key={index}>
+                        <Row> {/* key={index} */}
                                 <Col sm="6">
                                     Nombre del Cliente
                                 </Col>
@@ -41,7 +41,7 @@ class ListPoliza extends React.Component {
                                     Importe de la Póliza
                                 </Col>
                         </Row>
-                        {
+                        {/* {
                             this.props.listPolicies.map((name, amount, index) => {
                                 return(
                                     <Row key={index}>
@@ -54,11 +54,10 @@ class ListPoliza extends React.Component {
                                     </Row>
                                 )
                             })
-                        }
+                        } */}
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.changeCerrar} >Close</Button>
-                        <Button variant="primary" onClick={this.changeCerrar} >Save changes</Button>
+                        <Button variant="secondary" onClick={this.handleCerrar} >Cerrar</Button>
                     </Modal.Footer>
                 </Modal>
             </Container>

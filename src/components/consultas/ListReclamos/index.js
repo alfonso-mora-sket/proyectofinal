@@ -27,13 +27,13 @@ class ListReclamos extends React.Component {
                     aria-labelledby="contained-modal-title-vcenter"
                     centered
                     show={this.state.mostrar}
-                    onHide={this.changeCerrar}
+                    onHide={this.handleCerrar}
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Captura de Pólizas</Modal.Title>
+                        <Modal.Title>Listado de Reclamos</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Row key={index}>
+                        <Row> {/* key={index} */}
                                 <Col sm="6">
                                     Nombre del Cliente
                                 </Col>
@@ -41,7 +41,7 @@ class ListReclamos extends React.Component {
                                     Importe del Reclamo
                                 </Col>
                         </Row>
-                        {
+                        {/* {
                             this.props.listOfClaims.map((name, amount, index) => {
                                 return(
                                     <Row key={index}>
@@ -54,11 +54,10 @@ class ListReclamos extends React.Component {
                                     </Row>
                                 )
                             })
-                        }
+                        } */}
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.changeCerrar} >Close</Button>
-                        <Button variant="primary" onClick={this.changeCerrar} >Save changes</Button>
+                        <Button variant="secondary" onClick={this.handleCerrar} >Close</Button>
                     </Modal.Footer>
                 </Modal>
             </Container>

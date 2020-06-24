@@ -27,7 +27,7 @@ class Fondos extends React.Component {
                     aria-labelledby="contained-modal-title-vcenter"
                     centered
                     show={this.state.mostrar}
-                    onHide={this.changeCerrar}
+                    onHide={this.handleCerrar}
                 >
                     <Modal.Header closeButton>
                         <Modal.Title>Fondos</Modal.Title>
@@ -35,36 +35,29 @@ class Fondos extends React.Component {
                     <Modal.Body>
                         <Form.Group>
                             <Form.Row>
-                                <Form.Label column lg={2}>
-                                Total Polizas:
-                                </Form.Label>
+                                <Form.Label column lg={2}>Total Polizas:</Form.Label>
                                 <Col>
-                                    {policy.amount}
+                                policy.amount {/* {policy.amount} */}
                                 </Col>
                             </Form.Row>
                             <br />
                             <Form.Row>
-                                <Form.Label column lg={2}>
-                                Total Reclamos:
-                                </Form.Label>
+                                <Form.Label column lg={2}>Total Reclamos:</Form.Label>
                                 <Col>
-                                    {claimPolicy.amount}
+                                claimPolicy.amount {/* {claimPolicy.amount} */}
                                 </Col>
                             </Form.Row>
                             <br />
                             <Form.Row>
-                                <Form.Label column lg={2}>
-                                Total Fondos:
-                                </Form.Label>
+                                <Form.Label column lg={2}>Total Fondos:</Form.Label>
                                 <Col>
-                                    {policy.amount - claimPolicy.amount}
+                                policy.amount - claimPolicy.amount {/*{policy.amount - claimPolicy.amount} */}
                                 </Col>
                             </Form.Row>
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.changeCerrar} >Close</Button>
-                        <Button variant="primary" onClick={this.changeCerrar} >Save changes</Button>
+                        <Button variant="secondary" onClick={this.handleCerrar} >Cerrar</Button>
                     </Modal.Footer>
                 </Modal>
             </Container>

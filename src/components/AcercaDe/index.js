@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Modal, Button, Form, Row, Col } from 'react-bootstrap'
+import { $CombinedState } from 'redux';
 
 class AcercaDe extends React.Component {
     constructor(props) {
@@ -17,7 +18,7 @@ class AcercaDe extends React.Component {
     handleMostrar = () => {
         this.setState({mostrar: true})
      }
- 
+
     render() {
 
     return(
@@ -27,7 +28,7 @@ class AcercaDe extends React.Component {
                     aria-labelledby="contained-modal-title-vcenter"
                     centered
                     show={this.state.mostrar}
-                    onHide={this.changeCerrar}
+                    onHide={this.handleCerrar}
                 >
                     <Modal.Header closeButton>
                         <Modal.Title>Academia Digital</Modal.Title>
@@ -38,11 +39,11 @@ class AcercaDe extends React.Component {
                         <br/>
                         <p>José Alfonso Mora Beltrán</p>
                         <br/>
-                        <a>${Date.now()}</a>
+                        <a type="date">${Date.now()}</a>
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.changeCerrar}>Close</Button>
+                        <Button variant="secondary" onClick={this.handleCerrar}>Close</Button>
                     </Modal.Footer>                
                 </Modal>
             </Container>

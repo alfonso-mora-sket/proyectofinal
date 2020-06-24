@@ -12,7 +12,6 @@ class App extends React.Component{
     render(){
         return(
             <Container>
-                <Redux/>
                 <NavMenu></NavMenu>
                 <Poliza></Poliza>
                 <FooterPage></FooterPage>
