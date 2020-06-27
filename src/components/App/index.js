@@ -1,23 +1,35 @@
 import React from 'react'
-//import ReactDom from 'react-dom'
 import { Container } from 'react-bootstrap'
+import { BrowserRouter, Route } from 'react-router-dom'
 
-import Redux from '../Redux';
 import NavMenu from '../NavMenu'
 import FooterPage from '../Footer';
-import Poliza from '../Poliza';
 
-class App extends React.Component{
+import Poliza from '../Poliza'
+import Reclamos from '../Reclamos'
+import ListPolizas from '../consultas/ListPolizas'
+import ListReclamos from '../consultas/ListReclamos'
+import Fondos from '../consultas/Fondos'
+import AcercaDe from '../AcercaDe'
 
-    render(){
-        return(
-            <Container>
+const App = () => {
+ 
+    return(
+        <Container className="container-fluid">
+            <BrowserRouter>
                 <NavMenu></NavMenu>
-                <Poliza></Poliza>
+
+                <Route path="/Poliza"       component={Poliza}></Route>
+                <Route path="/Reclamos"     component={Reclamos}></Route>
+                <Route path="/ListPolizas"  component={ListPolizas}></Route>
+                <Route path="/ListReclamos" component={ListReclamos}></Route>
+                <Route path="/Fondos"       component={Fondos}></Route>
+                <Route path="/AcercaDe"     component={AcercaDe}></Route>
+
                 <FooterPage></FooterPage>
-            </Container>
-        )
-    }
+            </BrowserRouter>
+        </Container>
+    )
 }
 
-export default App
+export default (App)

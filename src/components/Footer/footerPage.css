@@ -1,17 +1,17 @@
 .footer{
-    margin-top: 770px;
+    margin-top: 805px;
     padding: 10px;
     background-color:black;
     font-size: 14px;
     color: gray;
-    
 }
 
 .footer-btn{
-    background-color: rgb(0, 89, 255);
+    background-color:gray;
     font-size: 10px;
     color: whitesmoke;
     border-radius: 4px;
+    border-color: solid black;
     margin: 5px;
     padding: 4px;  
 }

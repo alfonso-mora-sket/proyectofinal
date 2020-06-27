@@ -1,79 +1,54 @@
 import React from 'react'
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
 
-import Poliza from '../Poliza'
-import Reclamos from '../Reclamos'
-import ListPoliza from '../consultas/ListPoliza'
-import ListReclamos from '../consultas/ListReclamos'
-import Fondos from '../consultas/Fondos'
-import AcercaDe from '../AcercaDe'
+const NavMenu = () => {
 
-class NavMenu extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+    return(
+        <Container>
 
-    handlePoliza = () => {
-        this.PolizaRef.handleMostrar();
-    }
-
-    handleReclamos = () => {
-        this.ReclamosRef.handleMostrar();
-    }
-
-    handleListPoliza = () => {
-        this.ListPolizaRef.handleMostrar();
-    }
-
-    handleListReclamos = () => {
-        this.ListReclamosRef.handleMostrar();
-    }
-
-    handleFondos = () => {
-        this.FondosRef.handleMostrar();
-    }
-
-    handleAcercaDe = () => {
-        this.AcercaDeRef.handleMostrar();
-    }
-
-    render () {
-        return(
-            <Container>
- 
-                <Poliza       ref={element => {this.PolizaRef = element}}/> 
-                <Reclamos     ref={element => {this.ReclamosRef = element}}/> 
-                <ListPoliza   ref={element => {this.ListPolizaRef = element}}/> 
-                <ListReclamos ref={element => {this.ListReclamosRef = element}}/> 
-                <Fondos       ref={element => {this.FondosRef = element}}/>
-                <AcercaDe     ref={element => {this.AcercaDeRef = element}}/> 
- 
-                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <Navbar.Brand href="#home">Asegurodora ALFMOR</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="mr-auto">
-                            <Nav.Link href="#polizas" onClick = {this.handlePoliza}>
-                                 Polizas
-                            </Nav.Link>
-                            <Nav.Link href="#reclamos" onClick = {this.handleReclamos}>
-                                Reclamos
-                            </Nav.Link>
-                            <NavDropdown title="Consultas" id="collasible-nav-dropdown">
-                                <NavDropdown.Item href="#ListPoliza" onClick = {this.handleListPoliza}>Listado de Pólizas</NavDropdown.Item>
-                                <NavDropdown.Item href="#ListReclamos" onClick = {this.handleListReclamos}>Listado de Reclamos</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#aFinanzas" onClick = {this.handleFondos}>Finanzas</NavDropdown.Item>
-                            </NavDropdown>
-                        </Nav>
-                        <Nav>
-                            <Nav.Link eventKey={2} href="#AcercaDe" onClick = {this.handleAcercaDe}>Acerca de</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
-           </Container>
-        )
-    }
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <Navbar.Brand href="#home">
+                <img
+                    src="../../../logo192.png"
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                    alt="React Bootstrap logo"
+                />
+                    Asegurodora ALFMOR
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="mr-auto">
+                        <LinkContainer to="/Poliza">
+                            <Nav.Link href="#polizas">Polizas</Nav.Link>
+                         </LinkContainer>
+                         <LinkContainer to="/Reclamos">
+                            <Nav.Link href="#reclamos">Reclamos</Nav.Link>
+                         </LinkContainer>
+                        <NavDropdown title="Consultas" id="collasible-nav-dropdown">
+                            <LinkContainer to="/ListPolizas">
+                                <NavDropdown.Item href="#ListPolizas">Listado de Pólizas</NavDropdown.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/ListReclamos">
+                                <NavDropdown.Item href="#ListReclamos">Listado de Reclamos</NavDropdown.Item>
+                            </LinkContainer>
+                            <NavDropdown.Divider />
+                            <LinkContainer to="/Fondos">
+                                <NavDropdown.Item href="#Fondos">Fondos</NavDropdown.Item>
+                            </LinkContainer>
+                        </NavDropdown>
+                    </Nav>
+                    <Nav>
+                        <LinkContainer to="/AcercaDe">
+                           <Nav.Link eventKey={2} href="#AcercaDe">Acerca de</Nav.Link>
+                        </LinkContainer>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        </Container>
+    )
     
 }
 

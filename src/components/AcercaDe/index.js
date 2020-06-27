@@ -1,54 +1,31 @@
 import React from 'react'
-import { Container, Modal, Button, Form, Row, Col } from 'react-bootstrap'
-import { $CombinedState } from 'redux';
+import { Container, Form} from 'react-bootstrap'
 
-class AcercaDe extends React.Component {
-    constructor(props) {
-        super(props);
+import '../consultas/Styles/formGroup.css'
 
-        this.state = {
-            mostrar: false,
-        }
-    }
-    
-    handleCerrar = () => {
-       this.setState({mostrar: false})
-    }
-
-    handleMostrar = () => {
-        this.setState({mostrar: true})
-     }
-
-    render() {
+const AcercaDe = () => {
 
     return(
-            <Container>
-                <Modal 
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                    show={this.state.mostrar}
-                    onHide={this.handleCerrar}
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Academia Digital</Modal.Title>
-                    </Modal.Header>
-
-                    <Modal.Body>
-                        <p>Curso HTML, CSS y React</p>
-                        <br/>
-                        <p>José Alfonso Mora Beltrán</p>
-                        <br/>
-                        <a type="date">${Date.now()}</a>
-                    </Modal.Body>
-
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleCerrar}>Close</Button>
-                    </Modal.Footer>                
-                </Modal>
-            </Container>
-        )
-    }
+        <Container className="container-fluid">
+            <Form.Group className="formGroup">
+                <Form.Row class="text-center">
+                    <h3>Academia Digital</h3>
+                </Form.Row>
+                <hr/>
+                <Form.Row class="text-center">
+                    <h4>Curso HTML, CSS y React</h4>
+                </Form.Row>
+                <hr/>
+                <Form.Row  class="text-center">
+                    <h5>José Alfonso Mora Beltrán</h5>
+                </Form.Row>
+                <br/>
+                <Form.Row  class="text-right">
+                    <h6>Junio de 2020</h6>
+                </Form.Row>
+            </Form.Group>
+        </Container>
+    )
 }
 
-export default AcercaDe
+export default (AcercaDe)

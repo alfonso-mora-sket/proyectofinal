@@ -1,68 +1,52 @@
 import React from 'react'
-import { Container, Modal, Button, Form, Col } from 'react-bootstrap'
+import { Container, Form, Col } from 'react-bootstrap'
+import { connect } from 'react-redux'
 
-class Fondos extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            mostrar: false,
-        }
-    }
-    
-    handleCerrar = () => {
-       this.setState({mostrar: false})
-    }
-
-    handleMostrar = () => {
-        this.setState({mostrar: true})
-     }
+const Fondos = (props) => {
  
-    render() {
-
     return(
-            <Container>
-                <Modal 
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                    show={this.state.mostrar}
-                    onHide={this.handleCerrar}
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Fondos</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form.Group>
-                            <Form.Row>
-                                <Form.Label column lg={2}>Total Polizas:</Form.Label>
-                                <Col>
-                                policy.amount {/* {policy.amount} */}
-                                </Col>
-                            </Form.Row>
-                            <br />
-                            <Form.Row>
-                                <Form.Label column lg={2}>Total Reclamos:</Form.Label>
-                                <Col>
-                                claimPolicy.amount {/* {claimPolicy.amount} */}
-                                </Col>
-                            </Form.Row>
-                            <br />
-                            <Form.Row>
-                                <Form.Label column lg={2}>Total Fondos:</Form.Label>
-                                <Col>
-                                policy.amount - claimPolicy.amount {/*{policy.amount - claimPolicy.amount} */}
-                                </Col>
-                            </Form.Row>
-                        </Form.Group>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleCerrar} >Cerrar</Button>
-                    </Modal.Footer>
-                </Modal>
-            </Container>
+        <Container className="container-fluid">
+            <Form.Group className="formGroup">
+                <Form.Row class="text-center">
+                    <h3>Fondos</h3>
+                </Form.Row>
+                <hr/>
+                <Form.Row>
+                    <Col>
+                        <Form.Label column sm={9}>Total Polizas:</Form.Label>
+                    </Col>
+                    <Col>
+                        <Form.Label column sm={9}>${props.totalPoliza}</Form.Label>
+                    </Col>
+                </Form.Row>
+                <Form.Row>
+                    <Col>
+                        <Form.Label column sm={9}>Total Reclamos:</Form.Label>
+                    </Col>
+                    <Col>
+                        <Form.Label column sm={9}>$({props.totalReclamos})</Form.Label>
+                    </Col>
+                </Form.Row>
+                <hr/>
+                <Form.Row>
+                    <Col>
+                        <Form.Label column sm={9}>Total Fondos:</Form.Label>
+                    </Col>
+                    <Col>
+                        <Form.Label column sm={9}>${props.totalFinanzas}</Form.Label>
+                    </Col>
+                </Form.Row>
+           </Form.Group>
+        </Container>
         )
+}
+
+const mapStateToProps = (state) => {
+    return {
+        totalPoliza: state.totalPoliza,
+        totalReclamos: state.totalReclamos,
+        totalFinanzas: state.totalFinanzas
     }
 }
 
-export default Fondos
+export default connect(mapStateToProps)(Fondos)

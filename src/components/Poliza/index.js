@@ -1,62 +1,66 @@
 import React from 'react'
-import { Container, Modal, Button, Form, Col } from 'react-bootstrap'
+import { Container, Button, Form, Col } from 'react-bootstrap'
+import {connect} from 'react-redux'
 
-class Poliza extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-          mostrar: false
+import {crearPoliza, eliminarPoliza} from '../Actions'
+
+import '../consultas/Styles/formGroup.css'
+
+const Poliza = (props) => {
+
+    const nameRef = React.createRef()
+    const amountRef = React.createRef()
+
+    const handlerCreate = () => {
+        const policyObj = {
+            name: nameRef.current.value,
+            amount: parseInt(amountRef.current.value)
         }
-      }
-
-    handleCerrar = () => {
-      this.setState({mostrar : false})
-    }
-  
-    handleMostrar = () => {
-      this.setState({mostrar : true})
+        props.crearPoliza(policyObj.name, policyObj.amount)
+        nameRef.current.value = ''
+        amountRef.current.value = ''
     }
 
-    render() {
+    const handleDelete = () => {
+        const name = nameRef.current.value
+        props.eliminarPoliza(name)
+    }
 
     return(
+        <Container className="container-fluid">
+            <Form.Group className="formGroup">
+                <Form.Row>
+                    <h3>Captura de Pólizas</h3>
+                </Form.Row>
+                <hr/>
+                <Form.Row>
+                    <Form.Label column lg={2} >Nombre:</Form.Label>
+                    <Col>
+                        <Form.Control ref={nameRef} type="text" placeholder="Nombre del cliente" />
+                    </Col>
+                </Form.Row>
+                <br />
+                <Form.Row>
+                    <Form.Label column lg={2}>Importe:</Form.Label>
+                    <Col>
+                        <Form.Control ref={amountRef} type="numeric" placeholder="Importe de la póliza" />
+                    </Col>
+                </Form.Row>
+                <br />
+                <hr/>
+                <Form.Row>
+                    <Col sm="6">
+                        <Button variant="primary" onClick={handlerCreate}>Agregar Póliza</Button>
+                    </Col>
+                    <Col sm="6">
+                        <Button variant="primary" onClick={handleDelete}>Eliminar Póliza</Button>
+                    </Col>
+                </Form.Row>
+            </Form.Group>
+    </Container>
+)
 
-            <Container>
-               <Modal 
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                    show={this.state.mostrar}
-                    onHide={this.handleCerrar}
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title>Captura de Pólizas</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form.Group>
-                            <Form.Row>
-                                <Form.Label column lg={2}>Nombre:</Form.Label>
-                                <Col>
-                                    <Form.Control type="text" placeholder="Nombre del cliente" />
-                                </Col>
-                            </Form.Row>
-                            <br />
-                            <Form.Row>
-                                <Form.Label column lg={2}>Importe:</Form.Label>
-                                <Col>
-                                    <Form.Control type="numeric" placeholder="Importe de la póliza" />
-                                </Col>
-                            </Form.Row>
-                        </Form.Group>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="primary" onClick={this.handleCerrar} >Aplicar cambios</Button>
-                        <Button variant="secondary" onClick={this.handleCerrar} >Cerrar</Button>
-                    </Modal.Footer>
-                </Modal>
-            </Container>
-        )
-    }
 }
 
-export default Poliza
+export default connect(null, {crearPoliza, eliminarPoliza})(Poliza)
+
