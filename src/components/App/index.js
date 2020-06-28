@@ -5,31 +5,34 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import NavMenu from '../NavMenu'
 import FooterPage from '../Footer';
 
-import Poliza from '../Poliza'
-import Reclamos from '../Reclamos'
-import ListPolizas from '../consultas/ListPolizas'
-import ListReclamos from '../consultas/ListReclamos'
-import Fondos from '../consultas/Fondos'
+import Factura from '../Factura'
+import NotasCredito from '../NotasCredito'
+import ListFacturas from '../Consultas/ListFacturas'
+import ListNotasCredito from '../Consultas/ListNotasCredito'
+import Balance from '../Consultas/Balance'
 import AcercaDe from '../AcercaDe'
 
-const App = () => {
+class App extends React.Component {
+
+    render () {
  
-    return(
-        <Container className="container-fluid">
-            <BrowserRouter>
-                <NavMenu></NavMenu>
+        return(
+            <Container className="container-fluid">
+                <BrowserRouter>
+                    <NavMenu></NavMenu>
 
-                <Route path="/Poliza"       component={Poliza}></Route>
-                <Route path="/Reclamos"     component={Reclamos}></Route>
-                <Route path="/ListPolizas"  component={ListPolizas}></Route>
-                <Route path="/ListReclamos" component={ListReclamos}></Route>
-                <Route path="/Fondos"       component={Fondos}></Route>
-                <Route path="/AcercaDe"     component={AcercaDe}></Route>
+                    <Route path="/Factura"          component={Factura}></Route>
+                    <Route path="/NotasCredito"     component={NotasCredito}></Route>
+                    <Route path="/ListFacturas"     component={ListFacturas}></Route>
+                    <Route path="/ListNotasCredito" component={ListNotasCredito}></Route>
+                    <Route path="/Balance"          component={Balance}></Route>
+                    <Route path="/AcercaDe"         component={AcercaDe}></Route>
 
-                <FooterPage></FooterPage>
-            </BrowserRouter>
-        </Container>
-    )
+                    <FooterPage></FooterPage>
+                </BrowserRouter>
+            </Container>
+        )
+    }
 }
 
-export default (App)
+export default App

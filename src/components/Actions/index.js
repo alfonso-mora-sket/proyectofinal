@@ -1,33 +1,38 @@
-export const crearPoliza = (name, amount) => {
+export const crearFactura = (nombreCliente, importe) => {
     return {
-        type: 'CREAR_POLIZA',
+        type: 'CREAR_FACTURA',
         payload: {
-            name: name,
-            amount: amount
+            nombreCliente: nombreCliente,
+            importe: importe,
+            estado:  'facturada'
         }
     }
 }
 
-export const eliminarPoliza = (name) => {
+export const eliminarFactura = (nombreCliente, importe, estado) => {
     return {
-        type: 'ELIMINAR_POLIZA',
-        payload: name
-    }
-}
-
-export const crearReclamo = (information) => {
-    return {
-        type: 'CREAR_RECLAMO',
+        type: 'ELIMINAR_FACTURA',
         payload: {
-            name: information.name,
-            amount: information.amount
+            nombreCliente: nombreCliente,
+            importe: importe,
+            estado:  estado
         }
     }
 }
 
-export const eliminarReclamo = (name) => {
+export const crearNotaCredito = (notas) => {
     return {
-        type: 'ELIMINAR_RECLAMO',
-        payload: name
+        type: 'CREAR_NOTACREDITO',
+        payload: {
+            nombreCliente: notas.nombreCliente,
+            importe: notas.importe
+        }
+    }
+}
+
+export const eliminarNotaCredito = (nombreCliente) => {
+    return {
+        type: 'ELIMINAR_NOTACREDITO',
+        payload: nombreCliente
     }
 }

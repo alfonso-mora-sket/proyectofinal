@@ -16,27 +16,27 @@ const NavMenu = () => {
                     className="d-inline-block align-top"
                     alt="React Bootstrap logo"
                 />
-                    Asegurodora ALFMOR
+                Conta Plus
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <LinkContainer to="/Poliza">
-                            <Nav.Link href="#polizas">Polizas</Nav.Link>
+                        <LinkContainer to="/Factura">
+                            <Nav.Link href="#Facturas">Facturas</Nav.Link>
                          </LinkContainer>
-                         <LinkContainer to="/Reclamos">
-                            <Nav.Link href="#reclamos">Reclamos</Nav.Link>
+                         <LinkContainer to="/NotasCredito">
+                            <Nav.Link href="#NotasCredito">Notas de Creditos</Nav.Link>
                          </LinkContainer>
                         <NavDropdown title="Consultas" id="collasible-nav-dropdown">
-                            <LinkContainer to="/ListPolizas">
-                                <NavDropdown.Item href="#ListPolizas">Listado de Pólizas</NavDropdown.Item>
+                            <LinkContainer to="/ListFacturas">
+                                <NavDropdown.Item href="#ListFacturas">Listado Facturas</NavDropdown.Item>
                             </LinkContainer>
-                            <LinkContainer to="/ListReclamos">
-                                <NavDropdown.Item href="#ListReclamos">Listado de Reclamos</NavDropdown.Item>
+                            <LinkContainer to="/ListNotasCredito">
+                                <NavDropdown.Item href="#ListNotasCredito">Listado Notas de Creditos</NavDropdown.Item>
                             </LinkContainer>
                             <NavDropdown.Divider />
-                            <LinkContainer to="/Fondos">
-                                <NavDropdown.Item href="#Fondos">Fondos</NavDropdown.Item>
+                            <LinkContainer to="/Balance">
+                                <NavDropdown.Item href="#Balance">Balance</NavDropdown.Item>
                             </LinkContainer>
                         </NavDropdown>
                     </Nav>

@@ -2,13 +2,15 @@ import React from 'react'
 import { Container, Form, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
-const Fondos = (props) => {
+import '../../Consultas/Styles/formGroup.css'
+
+const Balance = (props) => {
  
     return(
         <Container className="container-fluid">
             <Form.Group className="formGroup">
                 <Form.Row class="text-center">
-                    <h3>Fondos</h3>
+                    <h3>Balance</h3>
                 </Form.Row>
                 <hr/>
                 <Form.Row>
@@ -16,7 +18,7 @@ const Fondos = (props) => {
                         <Form.Label column sm={9}>Total Polizas:</Form.Label>
                     </Col>
                     <Col>
-                        <Form.Label column sm={9}>${props.totalPoliza}</Form.Label>
+                        <Form.Label column sm={9}>${props.totalFactura}</Form.Label>
                     </Col>
                 </Form.Row>
                 <Form.Row>
@@ -24,16 +26,16 @@ const Fondos = (props) => {
                         <Form.Label column sm={9}>Total Reclamos:</Form.Label>
                     </Col>
                     <Col>
-                        <Form.Label column sm={9}>$({props.totalReclamos})</Form.Label>
+                        <Form.Label column sm={9}>$({props.totalNotasCredito})</Form.Label>
                     </Col>
                 </Form.Row>
                 <hr/>
                 <Form.Row>
                     <Col>
-                        <Form.Label column sm={9}>Total Fondos:</Form.Label>
+                        <Form.Label column sm={9}>Total Balance:</Form.Label>
                     </Col>
                     <Col>
-                        <Form.Label column sm={9}>${props.totalFinanzas}</Form.Label>
+                        <Form.Label column sm={9}>${props.totalBalance}</Form.Label>
                     </Col>
                 </Form.Row>
            </Form.Group>
@@ -43,10 +45,10 @@ const Fondos = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        totalPoliza: state.totalPoliza,
-        totalReclamos: state.totalReclamos,
-        totalFinanzas: state.totalFinanzas
+        totalFactura:      state.totalFactura,
+        totalNotasCredito: state.totalNotasCredito,
+        totalBalance:      state.totalBalance
     }
 }
 
-export default connect(mapStateToProps)(Fondos)
+export default connect(mapStateToProps)(Balance)

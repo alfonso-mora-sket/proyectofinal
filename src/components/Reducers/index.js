@@ -2,73 +2,91 @@ import { combineReducers } from 'redux'
 
 const listaInicial = [
     {
-        name: 'Manuel', 
-        amount: 20
+        nombreCliente: 'Alfonso', 
+        importe: 100,
+        estado: 'facturada'
     }, 
     {
-        name: 'Luis', amount: 100
-    }        
+        nombreCliente: 'Jorge', 
+        importe: 200,
+        estado: 'facturada'
+    },       
+    {
+        nombreCliente: 'Rosario', 
+        importe: 300,
+        estado: 'facturada'
+    },  
+    {
+        nombreCliente: 'Carlos', 
+        importe: 400,
+        estado: 'facturada'
+    }        	
 ]
 
-const polizaReducer = (listaPoliza= listaInicial, action) => {
+
+const facturaReducer = (listaFactura = listaInicial, action)  => {
     switch(action.type){
-        case "CREAR_POLIZA":
-            return [...listaPoliza, action.payload]
-        case "ELIMINAR_POLIZA":
-            return listaPoliza.filter((policy) => { return policy.name !== action.payload })
+        case "CREAR_FACTURA":
+            return [...listaFactura, action.payload]
+        case "ELIMINAR_FACTURA":
+            return [listaFactura.filter((factura) => { return factura.nombreCliente !== action.payload }), 
+                    Object.assign({},listaFactura[action.index], 
+                       {nombreCliente: action.nombreCliente, 
+                        importe:       action.importe,
+                        estado:        'cancelada'})]
         default:
-            return listaPoliza
+            return listaFactura
     }
 }
 
-const totalPolizaReducer = (importeTotalPol = 120, action) => {
+const totalfacturaReducer = (impTotalFactura = 1000, action) => {
     switch(action.type){
-        case "CREAR_POLIZA":
-            return importeTotalPol + action.payload.amount
-        case "ELIMINAR_POLIZA":
-            return importeTotalPol - action.payload.amount
+        case "CREAR_FACTURA":
+            return impTotalFactura + action.payload.importe
+        case "ELIMINAR_FACTURA":
+            return impTotalFactura - action.payload.importe
         default:
-            return importeTotalPol
+            return impTotalFactura
     }
 }
 
-const finanzasReducer = (importeTotalFin = 120, action) => {
+const balanceReducer = (impTotalBalance = 1000, action) => {
     switch(action.type){
-        case "CREAR_POLIZA":
-            return importeTotalFin + action.payload.amount
-        case "CREAR_RECLAMO":
-            return importeTotalFin - action.payload.amount
+        case "CREAR_FACTURA":
+            return impTotalBalance + action.payload.importe
+        case "CREAR_NOTACREDITO":
+            return impTotalBalance - action.payload.importe
         default:
-            return importeTotalFin
+            return impTotalBalance
     }
 }
 
-const reclamosReducer = (listaReclamos = [], action) => {
+const notascreditoReducer = (listaNotasCredito = [], action) => {
     switch(action.type){
-        case "CREAR_RECLAMO":
-            return [...listaReclamos, action.payload]
-        case "ELIMINAR_RECLAMO":
-                return listaReclamos.filter((claim) => { return claim.name !== action.payload })
+        case "CREAR_NOTACREDITO":
+            return [...listaNotasCredito, action.payload]
+        case "ELIMINAR_NOTACREDITO":
+                return listaNotasCredito.filter((notascredito) => { return notascredito.nombreCliente !== action.payload })
         default:
-            return listaReclamos
+            return listaNotasCredito
     }
 }
 
-const totalReclamosReducer = (importeTotalRec = 0, action) => {
+const totalnotascreditoReducer = (impTotalNotasCredito = 0, action) => {
     switch(action.type){
-        case "CREAR_RECLAMO":
-            return importeTotalRec + action.payload.amount
-        case "ELIMINAR_RECLAMO":
-            return importeTotalRec - action.payload.amount
+        case "CREAR_NOTACREDITO":
+            return impTotalNotasCredito + action.payload.importe
+        case "ELIMINAR_NOTACREDITO":
+            return impTotalNotasCredito - action.payload.importe
         default:
-            return importeTotalRec
+            return impTotalNotasCredito
     }
 }
 
 export default combineReducers({
-    listaDePolizas:  polizaReducer,
-    totalPoliza:     totalPolizaReducer,
-    totalFinanzas:   finanzasReducer,
-    listaDeReclamos: reclamosReducer,
-    totalReclamos:   totalReclamosReducer
+    listaDeFacturas:     facturaReducer,
+    totalFactura:        totalfacturaReducer,
+    totalBalance:        balanceReducer,
+    listaDeNotasCredito: notascreditoReducer,
+    totalNotasCredito:   totalnotascreditoReducer
 })
