@@ -9,6 +9,7 @@ import Factura from '../Factura'
 import NotasCredito from '../NotasCredito'
 import ListFacturas from '../Consultas/ListFacturas'
 import ListNotasCredito from '../Consultas/ListNotasCredito'
+import ListCliente from '../Consultas/ListCliente'
 import Balance from '../Consultas/Balance'
 import AcercaDe from '../AcercaDe'
 
@@ -25,6 +26,7 @@ class App extends React.Component {
                     <Route path="/NotasCredito"     component={NotasCredito}></Route>
                     <Route path="/ListFacturas"     component={ListFacturas}></Route>
                     <Route path="/ListNotasCredito" component={ListNotasCredito}></Route>
+                    <Route path="/ListCliente"      component={ListCliente}></Route>
                     <Route path="/Balance"          component={Balance}></Route>
                     <Route path="/AcercaDe"         component={AcercaDe}></Route>
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Container, Nav, Navbar, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 
 const NavMenu = () => {
@@ -40,6 +40,12 @@ const NavMenu = () => {
                             </LinkContainer>
                         </NavDropdown>
                     </Nav>
+                    <Form inline>
+                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                        <LinkContainer to="/ListCliente">
+                            <Button variant="secondary">Search</Button>
+                        </LinkContainer>
+                    </Form>
                     <Nav>
                         <LinkContainer to="/AcercaDe">
                            <Nav.Link eventKey={2} href="#AcercaDe">Acerca de</Nav.Link>

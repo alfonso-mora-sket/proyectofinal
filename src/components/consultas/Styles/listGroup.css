@@ -1,10 +1,10 @@
-.formGroup{
+.listGroup{
     position: absolute;
-    right: 450px;
+    right: 300px;
     top: 0px;
-    width:700px;
+    width:1000px;
     padding: 10px 20px;
-    margin: 15% auto;
+    margin: 6% auto;
     border: 1px solid black;
     background-color: gray;
     color: whitesmoke;

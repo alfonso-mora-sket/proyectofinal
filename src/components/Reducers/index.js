@@ -2,22 +2,26 @@ import { combineReducers } from 'redux'
 
 const listaInicial = [
     {
-        nombreCliente: 'Alfonso', 
+        nombreCliente: 'Alfonso',
+        concepto: 'Domine JavaScrip',
         importe: 100,
         estado: 'facturada'
     }, 
     {
-        nombreCliente: 'Jorge', 
+        nombreCliente: 'Jorge',
+        concepto: 'HTML, JavaScript y CSS',
         importe: 200,
         estado: 'facturada'
     },       
     {
-        nombreCliente: 'Rosario', 
+        nombreCliente: 'Rosario',
+        concepto: 'PHP y MySQL Editorial',
         importe: 300,
         estado: 'facturada'
     },  
     {
-        nombreCliente: 'Carlos', 
+        nombreCliente: 'Carlos',
+        concepto: 'Visual Studio .Net',
         importe: 400,
         estado: 'facturada'
     }        	
@@ -28,12 +32,20 @@ const facturaReducer = (listaFactura = listaInicial, action)  => {
     switch(action.type){
         case "CREAR_FACTURA":
             return [...listaFactura, action.payload]
-        case "ELIMINAR_FACTURA":
-            return [listaFactura.filter((factura) => { return factura.nombreCliente !== action.payload }), 
-                    Object.assign({},listaFactura[action.index], 
-                       {nombreCliente: action.nombreCliente, 
-                        importe:       action.importe,
-                        estado:        'cancelada'})]
+        case "CANCELAR_FACTURA":
+//            return [listaFactura.filter((factura) => { return factura.nombreCliente !== action.payload }), 
+//                    Object.assign({},listaFactura[action.index], 
+//                       {nombreCliente: action.nombreCliente, 
+//                        importe:       action.importe,
+//                        estado:        'cancelada'})]
+
+            return listaFactura.map((factura) => { 
+                    if(factura.nombreCliente === action.payload.nombreCliente) {
+                        return factura.estado = 'cancelada'
+                   }
+                   else return factura
+               })
+//                    return listaFactura.filter((factura) => { return factura.nombreCliente !== action.payload })
         default:
             return listaFactura
     }
@@ -43,7 +55,7 @@ const totalfacturaReducer = (impTotalFactura = 1000, action) => {
     switch(action.type){
         case "CREAR_FACTURA":
             return impTotalFactura + action.payload.importe
-        case "ELIMINAR_FACTURA":
+        case "CANCELAR_FACTURA":
             return impTotalFactura - action.payload.importe
         default:
             return impTotalFactura
@@ -65,7 +77,7 @@ const notascreditoReducer = (listaNotasCredito = [], action) => {
     switch(action.type){
         case "CREAR_NOTACREDITO":
             return [...listaNotasCredito, action.payload]
-        case "ELIMINAR_NOTACREDITO":
+        case "CANCELAR_NOTACREDITO":
                 return listaNotasCredito.filter((notascredito) => { return notascredito.nombreCliente !== action.payload })
         default:
             return listaNotasCredito
@@ -76,17 +88,36 @@ const totalnotascreditoReducer = (impTotalNotasCredito = 0, action) => {
     switch(action.type){
         case "CREAR_NOTACREDITO":
             return impTotalNotasCredito + action.payload.importe
-        case "ELIMINAR_NOTACREDITO":
+        case "CANCELAR_NOTACREDITO":
             return impTotalNotasCredito - action.payload.importe
         default:
             return impTotalNotasCredito
     }
 }
 
+const clienteSeleccionadoReducer = (clienteSeleccionado = null, action) => {
+    if(action.type === 'CLIENTE_SELECCIONADO'){
+        return action.payload
+    }
+    else{
+        return clienteSeleccionado
+    }
+}
+const clienteReducers = (clientes = [], action) => {
+    switch(action.type){
+        case 'GET_CLIENTE':
+            return action.payload
+        default:
+            return clientes
+    }
+}
+
 export default combineReducers({
     listaDeFacturas:     facturaReducer,
     totalFactura:        totalfacturaReducer,
-    totalBalance:        balanceReducer,
     listaDeNotasCredito: notascreditoReducer,
-    totalNotasCredito:   totalnotascreditoReducer
+    totalNotasCredito:   totalnotascreditoReducer,
+    totalBalance:        balanceReducer,
+    clienteSeleccionado: clienteSeleccionadoReducer,
+    clientes:            clienteReducers
 })

@@ -1,36 +1,41 @@
 import React from 'react'
-import { Container, Button, Form, Col } from 'react-bootstrap'
+import {Container, Button, Form, Col} from 'react-bootstrap'
 import {connect} from 'react-redux'
 
-import {crearFactura, eliminarFactura} from '../Actions'
+import {crearFactura, cancelarFactura} from '../Actions'
 import '../Consultas/Styles/formGroup.css'
+import '../Consultas/Styles/formheader.css'
 
 const Factura = (props) => {
 
     const nombreClienteRef = React.createRef()
+    const conceptoRef = React.createRef()
     const importeRef = React.createRef()
 
     const handlerCreate = () => {
-        const facturasObj = {
+        const facturaObj = {
             nombreCliente: nombreClienteRef.current.value,
+            concepto: conceptoRef.current.value,
             importe: parseInt(importeRef.current.value)
         }
-        props.crearFactura (facturasObj.nombreCliente, facturasObj.importe)
+        props.crearFactura(facturaObj)
         nombreClienteRef.current.value = ''
+        conceptoRef.current.value = ''
         importeRef.current.value = ''
     }
 
-    const handleDelete = () => {
+    const handlerDelete = () => {
         const nombreCliente = nombreClienteRef.current.value
-        props.eliminarFactura(nombreCliente)
+        props.cancelarFactura(nombreCliente)
         nombreClienteRef.current.value = ''
+        conceptoRef.current.value = ''
         importeRef.current.value = ''
     }
 
     return(
         <Container className="container-fluid">
             <Form.Group className="formGroup">
-                <Form.Row>
+                <Form.Row class="formheader">
                     <h3>Captura de Facturas</h3>
                 </Form.Row>
                 <hr/>
@@ -38,6 +43,13 @@ const Factura = (props) => {
                     <Form.Label column lg={2} >Nombre:</Form.Label>
                     <Col>
                         <Form.Control ref={nombreClienteRef} type="text" placeholder="Nombre del cliente" />
+                    </Col>
+                </Form.Row>
+                <br />
+                <Form.Row>
+                    <Form.Label column lg={2}>Concepto:</Form.Label>
+                    <Col>
+                        <Form.Control ref={conceptoRef} type="text" placeholder="Concepto" />
                     </Col>
                 </Form.Row>
                 <br />
@@ -50,11 +62,11 @@ const Factura = (props) => {
                 <br />
                 <hr/>
                 <Form.Row>
-                    <Col sm="6">
-                        <Button variant="primary" onClick={handlerCreate}>Agregar Factura</Button>
+                    <Col sm="4">
+                        <Button variant="info" onClick={handlerCreate}>Agregar Factura</Button>
                     </Col>
-                    <Col sm="6">
-                        <Button variant="primary" onClick={handleDelete}>Eliminar Factura</Button>
+                    <Col sm="4">
+                        <Button variant="info" onClick={handlerDelete}>Cancelar Factura</Button>
                     </Col>
                 </Form.Row>
             </Form.Group>
@@ -63,5 +75,5 @@ const Factura = (props) => {
 
 }
 
-export default connect(null, {crearFactura, eliminarFactura})(Factura)
+export default connect(null, {crearFactura, cancelarFactura})(Factura)
 

@@ -2,37 +2,48 @@ import React from 'react'
 import { Container, Form, Col } from 'react-bootstrap'
 import {connect} from 'react-redux'
 
-import '../../Consultas/Styles/formGroup.css'
+import '../../Consultas/Styles/listGroup.css'
+import '../../Consultas/Styles/formheader.css'
 
 const ListFacturas = (props) => {
  
-    const { listaDeFacturas } = props
-    
     return(
         <Container className="container-fluid">
-            <Form.Group className="formGroup" >
-                <Form.Row class="text-center">
+            <Form.Group className="listGroup" >
+                <Form.Row class="formheader">
                     <h3>Listado de Facturas</h3>
                 </Form.Row>
                 <hr/>
                 <Form.Row>
                     <Col>
-                       <Form.Label column sm={9}>Nombre del Cliente</Form.Label>
+                       <Form.Label column sm={10}>Nombre del Cliente</Form.Label>
                     </Col>
                     <Col>
-                        <Form.Label column sm={9}>Importe de la Factura</Form.Label>
+                       <Form.Label column sm={10}>Concepto</Form.Label>
+                       </Col>
+                    <Col>
+                        <Form.Label column sm={10}>Importe</Form.Label>
                     </Col>
-                </Form.Row>
+                    <Col>
+                        <Form.Label column sm={10}>Estado</Form.Label>
+                    </Col>
+               </Form.Row>
                 <hr/>
                 {
-                    listaDeFacturas.map((factura) => {
+                    props.listaDeFacturas.map((factura) => {
                         return (
                             <Form.Row>
                                 <Col>
-                                    <Form.Label column sm={9}>{factura.nombreCliente}</Form.Label>
+                                    <Form.Label column sm={10}>{factura.nombreCliente}</Form.Label>
                                 </Col>
                                 <Col>
-                                    <Form.Label column sm={9}>{factura.importe}</Form.Label>
+                                    <Form.Label column sm={10}>{factura.concepto}</Form.Label>
+                                </Col>
+                                <Col>
+                                    <Form.Label column sm={10}>{factura.importe}</Form.Label>
+                                </Col>
+                                <Col>
+                                    <Form.Label column sm={10}>{factura.estado}</Form.Label>
                                 </Col>
                             </Form.Row>
                         )
@@ -41,10 +52,10 @@ const ListFacturas = (props) => {
                 <hr/>
                  <Form.Row>
                     <Col>
-                        <Form.Label column sm={9}>Total Facturas:</Form.Label>
+                        <Form.Label column sm={10}>Total Facturas:</Form.Label>
                     </Col>
                     <Col>
-                        <Form.Label column sm={9}>${props.totalFactura}</Form.Label>
+                        <Form.Label column sm={10}>${props.totalFactura}</Form.Label>
                     </Col>
                 </Form.Row>
            </Form.Group>

@@ -3,13 +3,14 @@ import { Container, Form, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import '../../Consultas/Styles/formGroup.css'
+import '../../Consultas/Styles/formheader.css'
 
 const Balance = (props) => {
  
     return(
         <Container className="container-fluid">
             <Form.Group className="formGroup">
-                <Form.Row class="text-center">
+                <Form.Row class="formheader">
                     <h3>Balance</h3>
                 </Form.Row>
                 <hr/>

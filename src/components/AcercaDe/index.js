@@ -10,7 +10,7 @@ class AcercaDe extends React.Component {
         return(
             <Container className="container-fluid">
                 <Form.Group className="formGroup">
-                    <Form.Row class="text-center">
+                    <Form.Row class="formheader">
                         <h3>Academia Digital</h3>
                     </Form.Row>
                     <hr/>
@@ -18,7 +18,7 @@ class AcercaDe extends React.Component {
                         <h4>Curso HTML, CSS y React JS</h4>
                     </Form.Row>
                     <hr/>
-                    <Form.Row class="text-center bg-primary text-white">
+                    <Form.Row class="text-center">
                         <h4>Proycto Final: "ContaPlus"</h4>
                     </Form.Row>
                     <hr/>
