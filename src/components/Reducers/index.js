@@ -27,7 +27,6 @@ const listaInicial = [
     }        	
 ]
 
-
 const facturaReducer = (listaFactura = listaInicial, action)  => {
     switch(action.type){
         case "CREAR_FACTURA":
@@ -51,6 +50,22 @@ const facturaReducer = (listaFactura = listaInicial, action)  => {
     }
 }
 
+const notascreditoReducer = (listaNotasCredito = [], action) => {
+    switch(action.type){
+        case "CREAR_NOTACREDITO":
+            return [...listaNotasCredito, action.payload]
+        case "CANCELAR_NOTACREDITO":
+            return listaNotasCredito.map((notascredito) => { 
+                if(notascredito.nombreCliente === action.payload.nombreCliente) {
+                    return notascredito.estado = 'cancelada'
+               }
+               else return notascredito
+           })
+       default:
+            return listaNotasCredito
+    }
+}
+
 const totalfacturaReducer = (impTotalFactura = 1000, action) => {
     switch(action.type){
         case "CREAR_FACTURA":
@@ -59,6 +74,17 @@ const totalfacturaReducer = (impTotalFactura = 1000, action) => {
             return impTotalFactura - action.payload.importe
         default:
             return impTotalFactura
+    }
+}
+
+const totalnotascreditoReducer = (impTotalNotasCredito = 0, action) => {
+    switch(action.type){
+        case "CREAR_NOTACREDITO":
+            return impTotalNotasCredito + action.payload.importe
+        case "CANCELAR_NOTACREDITO":
+            return impTotalNotasCredito - action.payload.importe
+        default:
+            return impTotalNotasCredito
     }
 }
 
@@ -73,27 +99,6 @@ const balanceReducer = (impTotalBalance = 1000, action) => {
     }
 }
 
-const notascreditoReducer = (listaNotasCredito = [], action) => {
-    switch(action.type){
-        case "CREAR_NOTACREDITO":
-            return [...listaNotasCredito, action.payload]
-        case "CANCELAR_NOTACREDITO":
-                return listaNotasCredito.filter((notascredito) => { return notascredito.nombreCliente !== action.payload })
-        default:
-            return listaNotasCredito
-    }
-}
-
-const totalnotascreditoReducer = (impTotalNotasCredito = 0, action) => {
-    switch(action.type){
-        case "CREAR_NOTACREDITO":
-            return impTotalNotasCredito + action.payload.importe
-        case "CANCELAR_NOTACREDITO":
-            return impTotalNotasCredito - action.payload.importe
-        default:
-            return impTotalNotasCredito
-    }
-}
 
 const clienteSeleccionadoReducer = (clienteSeleccionado = null, action) => {
     if(action.type === 'CLIENTE_SELECCIONADO'){

@@ -16,7 +16,7 @@ const Balance = (props) => {
                 <hr/>
                 <Form.Row>
                     <Col>
-                        <Form.Label column sm={9}>Total Polizas:</Form.Label>
+                        <Form.Label column sm={9}>Total Facturas:</Form.Label>
                     </Col>
                     <Col>
                         <Form.Label column sm={9}>${props.totalFactura}</Form.Label>
@@ -24,7 +24,7 @@ const Balance = (props) => {
                 </Form.Row>
                 <Form.Row>
                     <Col>
-                        <Form.Label column sm={9}>Total Reclamos:</Form.Label>
+                        <Form.Label column sm={9}>Total Notas de Cédito:</Form.Label>
                     </Col>
                     <Col>
                         <Form.Label column sm={9}>$({props.totalNotasCredito})</Form.Label>
